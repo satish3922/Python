@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+'''write a program to search a keyword given by user in youtube and download the first search result'''
+
 # Importing request module & importing Beautisoup module from bs4
 # ---------------------------------------------------------------
 import requests,commands,time
