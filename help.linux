@@ -1,0 +1,119 @@
+_________________________________
+>> VLC PERMISSION FOR "ROOT" USER
+--------------------------------
+
+	"sed -i 's/geteuid/getppid/' /usr/bin/vlc"
+
+____________________________________
+>> TO MAKE SYSTEM ON WHEN LID IS OFF
+-----------------------------------
+
+	"systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target"
+	"systemctl restart systemd-logind.service"
+
+_________________________________
+>> TO INSTALL NETBEANS IN RHEL7.2
+--------------------------------
+	DOWNLOAD
+	--------
+	"wget http://download.netbeans.org/netbeans/8.0.1/final/bundles/netbeans-8.0.1-linux.sh" 
+	
+	INSTALL
+	-------
+	"chmod 700 netbeans-8.0.1-linux.sh"
+	"./netbeans-8.0.1-linux.sh"
+
+__________________
+>> TO INSTALL ATOM
+-----------------
+	DOWNLOAD
+	--------
+	"wget https://atom.io/download/rpm"
+	
+	INSTALL
+	-------
+	"rpm -ivh atom.x86_64.rpm"
+
+_______________________________________________________
+>> HOW TO INSTALL FIREFOX LATEST VERSION 'FIREFOX 56.0'
+------------------------------------------------------
+
+	FIRST OF ALL WE HAVE TO REMOVE OLDER FIREFOX:
+	---------------------------------------------
+		1. use this command 'yum remove	firefox -y'
+		2. use this command 'rm -rf /opt/firefox'
+
+	THEN DOWNLOAD FIREFOX LATEST VERSION IT MAY BE IN .TAR.BZ2 FILE FORMAT
+	----------------------------------------------------------------------
+
+	HOW TO EXTRACT THE FILE I.E "FIREFOX.TARBZ2":
+	---------------------------------------------
+		1. use this command 'tar -jxvf firefox.tar.bz2 -C /opt/'
+
+	NOW WE HAVE TO MAKE IT AS SYSTEM COMMAND:
+	-----------------------------------------	
+		1. use this command 'ln -s /opt/firefox/firefox /usr/bin/firefox
+
+	YOU JUST DONE IT !!!
+	--------------------
+
+_________________________________
+>> HOW TO INSTALL "HPING3.X86_64"
+---------------------------------
+	PACKAGE NAME:
+	-------------
+	hping3.x86_64 0:0.0.20051105-24.el7
+	
+	DEPENDENCIES:
+	-------------
+	tcl.x86_64 1:8.5.13-8.el7
+
+	REPO NEEDED:
+	------------
+	epel-release.noarch
+
+__________________________________________
+>>HOW TO CHECK PUBLIC IP ADDRESS OF SYSTEM
+------------------------------------------
+
+	COMMAND
+	-------
+	'dig +short myip.opendns.com @resolver1.opendns.com'
+
+______________________________________________________
+>>ADD SSH-KEY TO GITHUB FOR AUTO LOGIN THROUGH TERMINAL
+-------------------------------------------------------
+	
+	GENERATE SSH-KEY
+	----------------
+	'ssh-keygen -t rsa -C "satishsinha3922@gmail.com"'
+
+	COPY ~/.SSH/ID_RSA.PUB KEY
+	--------------------------
+	'cat ~/.ssh/id_rsa.pub'
+	'ctrl+shift+c'
+
+	ADDING SSH-KEY TO GITHUB PROFILE
+	--------------------------------
+	Go to Setting -> ssh key -> Add ssh-key
+
+	SETUP CONNECTION
+	----------------
+	To check the remote link of github
+	----------------------------------
+	'git remote -v'
+	
+	origin	https://github.com/satish3922/Python (fetch)
+	origin	https://github.com/satish3922/Python (push)
+	
+	If link is having https:// then run this command
+	------------------------------------------------
+	'git remote set-url origin git@github.com:satish3922/Python'
+	COMPLETED
+	---------
+	You are all set
+	'git push'
+	verifying : yes to continue for 1st time
+	Done !!!
+
+
