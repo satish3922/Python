@@ -29,11 +29,9 @@ for i in range(2,n,2):
 	a=result[i]
 	z=a.split('\n')
 	y.append(z[-1])
-y.pop(-1)
 
 # printing ip list
 # ----------------
 print("    IP's are :")
 for i in y:
 	print("\t\t"+i) 
-
