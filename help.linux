@@ -116,4 +116,32 @@ ______________________________________________________
 	verifying : yes to continue for 1st time
 	Done !!!
 
+______________________________________________
+>> HOW TO INSTALL IPYTHON NOTEBOOK AND JUPYTER
+----------------------------------------------
+	
+	INSTALL THIS PACKAGES
+	---------------------
+	
+	1. 'yum install gcc gcc-c++'
+	2. 'yum install kernel-devel'
+	3. 'yum install python-devel'
+	4. 'yum install libxslt-devel'
+	5. 'yum install libffi-devel' 
+	6. 'yum install openssl-devel' 
+	7. 'yum install python-pip'
 
+	CHECK VERSION OF PYTHON & PIP
+	-----------------------------
+	
+	'python --version && pip --version'
+
+	INSTALL JUPYTER
+	---------------
+	
+	'pip install jupyter'
+	
+	HOW TO USE
+	----------
+	
+	'jupyter notebook'
