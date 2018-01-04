@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env ipython
 
 '''write a program to search a keyword given by user in youtube and download the first search result'''
 
