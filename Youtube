@@ -50,21 +50,21 @@ print "-------Press 3 [720p]--------"
 n=raw_input("Enter choice: ")
 print "-----------------------------"
 print "-----------------------------"
-time.sleep(8)
+time.sleep(5)
 print "Please wait..."
-time.sleep(9)
+time.sleep(5)
 print "[youtube] : Downloading Webpage"
-time.sleep(15)
+time.sleep(5)
 print "[youtube] : Downloading video info webpage"
-time.sleep(15)
+time.sleep(5)
 print "[youtube] : Extracting video information"
-time.sleep(14)
+time.sleep(4)
 print "[youtube] : Downloading MPD manifest"
 time.sleep(8)
 print "fetching details..."
 time.sleep(9)
 print "Connected to www.youtube.com"
-time.sleep(15)
+time.sleep(5)
 print "Starting Downloading..."
 l=result[0]
 if n == '1':
