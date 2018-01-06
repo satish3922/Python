@@ -145,3 +145,230 @@ ______________________________________________
 	----------
 	
 	'jupyter notebook'
+
+______________________________________
+>> HOW TO INSTALL HTTP (APACHE-SERVER)
+--------------------------------------
+
+	INSTALLATION
+	------------
+	
+	'yum install httpd -y'
+
+	
+	STARTING SERVICE
+	----------------
+	
+	'systemctl start httpd.service'
+	
+	
+	RESTARTING SERVICE
+	------------------
+
+	'systemctl restart httpd.service'
+
+	
+	STOPING SERVICE
+	---------------
+
+	'systemctl stop httpd.service'
+
+	
+	ENABLING AND DISABLING SERCVICE
+	-------------------------------
+
+	'systemctl enable httpd.service'	
+	
+	'systemctl disable httpd.service'	
+
+
+_______________________________________
+>> HOW TO CONFIGURE A PAGE 'index.html'
+---------------------------------------
+
+	DOCUMENT ROOT OF HTTP SERVICE
+	-----------------------------
+	
+	'/var/www/html'
+	
+	STEP FOR HOSTING A WEBPAGE
+	--------------------------
+	
+	Step : I
+	--------
+	'make a index.html file in /var/www/html'
+	
+	Step : II
+	---------
+	'disable selinux by using this commands'
+	'setenforce 0'
+	'iptables -F'	
+
+	Step : III
+	----------
+	'then check in browser'
+	'http://localhost/' or 'http://systemIP/' or 'http://127.0.0.1/'
+
+___________________________________________________________________
+>> HOW TO VIRTUALLY HOST TWO WEBPAGE AT SAME IP WITH DIFFERENT NAME
+-------------------------------------------------------------------
+
+	CONFIGURE
+	---------
+	'checking configuration file if forgotten'
+	'rpm -qc httpd'  ---It will show you the configuration file
+	'/etc/httpd/conf/httpd.conf'  ---Configuration file of HTTPD 
+
+	STEP FOR VIRTUAL HOSTING
+	------------------------
+	
+	Step : I
+	--------
+	'make a another directory in /var/www/'
+	'mkdir /var/www/virtual'
+	
+	Step : II
+	---------
+	'make a file in /var/www/virtual/ as index.html'
+	'vim /var/www/vitual/index.html'
+
+	Step : III
+	----------
+	'Now configure /etc/httpd/conf/httpd.conf'
+	'write this line in last of file'
+	'vim /etc/httpd/conf/httpd.conf'
+	
+	<virtualhost 192.168.10.140:80>
+	servername station140.example.com
+	documentroot '/var/www/html'
+	</virtualhost>
+
+	<virtualhost 192.168.10.140:80>
+	servername virtual140.example.com
+	documentroot '/var/www/virtual'
+	</virtualhost>
+
+	Step : IV
+	---------
+	'Now start the service'
+	'systemctl restart httpd.service'
+	'check in browser'
+
+	'station140.example.com' ---first webpage of default document root
+	'virtual140.example.com' ---second webpage of virtual directory
+
+
+
+
+_______________________________________
+>> DEFINING VARIABLE IN SHELL SCRIPTING
+---------------------------------------
+[root@station ~]# x="hello"
+[root@station ~]# echo "hi $x"
+hi hello
+[root@station ~]# x=78       
+[root@station ~]# echo $x
+78       
+
+_____________________________
+>> IF ELSE IN SHELL SCRIPTING
+-----------------------------
+
+	if [ condition/statement ]
+	then
+		echo "if part"
+	elif [ condition/statement ]
+	then 
+		echo "elif part"
+	else
+		echo "else part"	 
+	fi     //Closing the if statement
+
+______________________________
+>> FOR LOOP IN SHELL SCRIPTING
+------------------------------
+        
+
+	Case I
+	------
+	
+
+	for((i=0;i<7;i++))
+	do
+	echo "normal for loop"
+	done
+
+	output : normal for loop
+
+
+
+	Case II
+	-------
+	
+	for i in 1 2 3
+	do
+	echo $i
+	done
+
+	output : 1 2 3
+
+
+	Case III
+	--------
+
+
+	for i in `cat hello.txt`
+	do 
+	echo $i
+	done
+
+____________________________
+>> SAMPLE OF SHELL SCRIPTING
+----------------------------
+
+	Example I
+	---------
+
+	#!/bin/bash
+	date
+	cal
+	echo "Hi"
+	uname
+
+
+	Example II
+	----------
+	
+	#!/bin/bash
+	echo "Enter your name :"
+	read name
+	if [ $name == "satish" ] 
+	then
+	echo "Welcome  Satish"
+	elif [ $name == "shubham" ] 
+	then 
+	echo "Welcome Shubham"
+	else
+	echo "Intruder entry"
+	fi 	
+
+
+	Example III
+	-----------
+	
+
+	#!/bin/bash
+	if [[ $1 = "satish" ]]
+	then
+        echo "Welcome to `uname` Satish"
+	elif [[ $1 = "shubham" ]]
+	then
+        echo "Welcome Shubham"
+	elif [[ $# = 0 ]]   #If no argument passed then give stdErr
+	then
+        echo "argErr : NO argument given ,Atleast 1 argument pass"
+	else
+        echo "Intruder entry"
+	fi 	
+
+
