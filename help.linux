@@ -1,3 +1,5 @@
+_______________________LINUX-TROUBLESHOOTING________________________
+
 _________________________________
 >> VLC PERMISSION FOR "ROOT" USER
 --------------------------------
@@ -14,24 +16,30 @@ ____________________________________
 _________________________________
 >> TO INSTALL NETBEANS IN RHEL7.2
 --------------------------------
+	
 	DOWNLOAD
 	--------
+	
 	"wget http://download.netbeans.org/netbeans/8.0.1/final/bundles/netbeans-8.0.1-linux.sh" 
 	
 	INSTALL
 	-------
+	
 	"chmod 700 netbeans-8.0.1-linux.sh"
 	"./netbeans-8.0.1-linux.sh"
 
 __________________
 >> TO INSTALL ATOM
 -----------------
+	
 	DOWNLOAD
 	--------
+	
 	"wget https://atom.io/download/rpm"
 	
 	INSTALL
 	-------
+	
 	"rpm -ivh atom.x86_64.rpm"
 
 _______________________________________________________
@@ -40,6 +48,7 @@ _______________________________________________________
 
 	FIRST OF ALL WE HAVE TO REMOVE OLDER FIREFOX:
 	---------------------------------------------
+	
 		1. use this command 'yum remove	firefox -y'
 		2. use this command 'rm -rf /opt/firefox'
 
@@ -48,10 +57,12 @@ _______________________________________________________
 
 	HOW TO EXTRACT THE FILE I.E "FIREFOX.TARBZ2":
 	---------------------------------------------
+	
 		1. use this command 'tar -jxvf firefox.tar.bz2 -C /opt/'
 
 	NOW WE HAVE TO MAKE IT AS SYSTEM COMMAND:
 	-----------------------------------------	
+	
 		1. use this command 'ln -s /opt/firefox/firefox /usr/bin/firefox
 
 	YOU JUST DONE IT !!!
@@ -60,16 +71,20 @@ _______________________________________________________
 _________________________________
 >> HOW TO INSTALL "HPING3.X86_64"
 ---------------------------------
+	
 	PACKAGE NAME:
 	-------------
+	
 	hping3.x86_64 0:0.0.20051105-24.el7
 	
 	DEPENDENCIES:
 	-------------
+	
 	tcl.x86_64 1:8.5.13-8.el7
 
 	REPO NEEDED:
 	------------
+	
 	epel-release.noarch
 
 __________________________________________
@@ -78,6 +93,7 @@ __________________________________________
 
 	COMMAND
 	-------
+	
 	'dig +short myip.opendns.com @resolver1.opendns.com'
 
 ______________________________________________________
@@ -86,31 +102,37 @@ ______________________________________________________
 	
 	GENERATE SSH-KEY
 	----------------
+	
 	'ssh-keygen -t rsa -C "satishsinha3922@gmail.com"'
 
 	COPY ~/.SSH/ID_RSA.PUB KEY
 	--------------------------
+	
 	'cat ~/.ssh/id_rsa.pub'
 	'ctrl+shift+c'
 
 	ADDING SSH-KEY TO GITHUB PROFILE
 	--------------------------------
+	
 	Go to Setting -> ssh key -> Add ssh-key
 
 	SETUP CONNECTION
 	----------------
 	To check the remote link of github
 	----------------------------------
-	'git remote -v'
 	
+	'git remote -v'
 	origin	https://github.com/satish3922/Python (fetch)
 	origin	https://github.com/satish3922/Python (push)
 	
 	If link is having https:// then run this command
 	------------------------------------------------
+	
 	'git remote set-url origin git@github.com:satish3922/Python'
+	
 	COMPLETED
 	---------
+	
 	You are all set
 	'git push'
 	verifying : yes to continue for 1st time
@@ -167,7 +189,6 @@ ______________________________________
 
 	'systemctl restart httpd.service'
 
-	
 	STOPING SERVICE
 	---------------
 
@@ -215,6 +236,7 @@ ___________________________________________________________________
 
 	CONFIGURE
 	---------
+	
 	'checking configuration file if forgotten'
 	'rpm -qc httpd'  ---It will show you the configuration file
 	'/etc/httpd/conf/httpd.conf'  ---Configuration file of HTTPD 
@@ -224,16 +246,19 @@ ___________________________________________________________________
 	
 	Step : I
 	--------
+	
 	'make a another directory in /var/www/'
 	'mkdir /var/www/virtual'
 	
 	Step : II
 	---------
+	
 	'make a file in /var/www/virtual/ as index.html'
 	'vim /var/www/vitual/index.html'
 
 	Step : III
 	----------
+	
 	'Now configure /etc/httpd/conf/httpd.conf'
 	'write this line in last of file'
 	'vim /etc/httpd/conf/httpd.conf'
@@ -250,25 +275,25 @@ ___________________________________________________________________
 
 	Step : IV
 	---------
+	
 	'Now start the service'
 	'systemctl restart httpd.service'
 	'check in browser'
-
 	'station140.example.com' ---first webpage of default document root
 	'virtual140.example.com' ---second webpage of virtual directory
-
 
 
 
 _______________________________________
 >> DEFINING VARIABLE IN SHELL SCRIPTING
 ---------------------------------------
-[root@station ~]# x="hello"
-[root@station ~]# echo "hi $x"
-hi hello
-[root@station ~]# x=78       
-[root@station ~]# echo $x
-78       
+
+	[root@station ~]# x="hello"
+	[root@station ~]# echo "hi $x"
+	hi hello
+	[root@station ~]# x=78       
+	[root@station ~]# echo $x
+	78       
 
 _____________________________
 >> IF ELSE IN SHELL SCRIPTING
@@ -287,11 +312,9 @@ _____________________________
 ______________________________
 >> FOR LOOP IN SHELL SCRIPTING
 ------------------------------
-        
 
 	Case I
 	------
-	
 
 	for((i=0;i<7;i++))
 	do
@@ -299,7 +322,6 @@ ______________________________
 	done
 
 	output : normal for loop
-
 
 
 	Case II
@@ -315,7 +337,6 @@ ______________________________
 
 	Case III
 	--------
-
 
 	for i in `cat hello.txt`
 	do 
@@ -356,7 +377,6 @@ ____________________________
 	Example III
 	-----------
 	
-
 	#!/bin/bash
 	if [[ $1 = "satish" ]]
 	then
@@ -371,4 +391,83 @@ ____________________________
         echo "Intruder entry"
 	fi 	
 
+______________________________
+>> HOW TO CONFIGURE NFS-SERVER
+------------------------------
+	___________
+	SERVER SIDE
+	-----------
 
+	Installing & Starting Service
+	-----------------------------
+	
+	'yum install nfs-utils -y'
+	'systemctl start nfs-server'
+	'systemctl enable nfs-server'
+
+	Configuring a nfs server for Client-IP 192.168.10.200
+	-----------------------------------------------------
+	
+	'mkdir /share'  ---folder to be shared as nfs
+	'vim /etc/exports'
+	'echo "/share 192.168.10.200(ro)" >> /etc/exports' 
+	'exportfs -r' ---reloading without closing nfs-server
+	
+	[ Note : ro - read only permission ]
+	[ Note : rw - read write permission ]
+	[ Note : IP of Server : 192.168.10.140 ]
+	[ Note : IP of Client : 192.168.10.200 ]
+	___________
+	CLIENT SIDE
+	-----------
+
+	Installing & Starting Service
+        -----------------------------
+
+        'yum install nfs-utils -y'
+        'systemctl start nfs-server'
+        'systemctl enable nfs-server'
+
+	Mounting /share in client system
+	--------------------------------
+	
+	'showmount 192.168.10.140'
+	'mkdir /mnt/share' ---directory where you wanna mount /share on your PC
+	'mount 192.168.10.140:/share /mnt/share'
+	'vim /etc/fstab'
+	'192.168.10.140:/share /mnt/share nfs _netdev 0 0'
+
+	
+	NOTE : If you share as 'rw' mode than you must give permission to folder
+
+
+______________________________________________________________
+>> HOW TO USE NMCLI TO SET PERMANENT IP FOR DIFFERENT LOCATION
+--------------------------------------------------------------
+	
+	CHECK CONNECTION
+	----------------
+
+	'nmcli connection show'
+	
+	NAME       UUID                           TYPE             DEVICE     
+	virbr0     1d9d6bdd-5e38d5-15a1d60591ea   bridge           virbr0     
+	docker0    a9bf4365-e-bea8-0b7a1d5c0f59   bridge           docker0    
+	-1floor    e4b17f2gh-97d6-32115fc0ea21    802-11-wireless  wlp6s0     
+
+	CREATING NEW CONNECTION NAME FOR SAME WL6PS0 CARD
+	-------------------------------------------------
+
+	'nmcli connection add con-name adhoc type wifi ifname wlp6s0 ssid AdHoc ip4 192.168.10.140/24 gw4 192.168.10.50'
+
+	
+_____________________________
+>> HOW TO MAKE YOUR IP STATIC
+-----------------------------
+
+	'nmcli connection modify -1floor ipv4.addresses 192.168.5.17/24 ipv4.gateway 192.168.5.1 ipv4.method manual connection.autoconnect yes'
+	
+	'nmcli connection up -1floor'
+
+
+ 	
