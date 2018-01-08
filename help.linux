@@ -209,7 +209,6 @@ _______________________________________
 
 	DOCUMENT ROOT OF HTTP SERVICE
 	-----------------------------
-	
 	'/var/www/html'
 	
 	STEP FOR HOSTING A WEBPAGE
@@ -236,29 +235,25 @@ ___________________________________________________________________
 
 	CONFIGURE
 	---------
-	
 	'checking configuration file if forgotten'
-	'rpm -qc httpd'  ---It will show you the configuration file
-	'/etc/httpd/conf/httpd.conf'  ---Configuration file of HTTPD 
+	'rpm -qc httpd'  			---It will show you the configuration file
+	'/etc/httpd/conf/httpd.conf'  		---Configuration file of HTTPD 
 
-	STEP FOR VIRTUAL HOSTING
-	------------------------
+	STEP FOR VIRTUAL HOSTING FOR DOCUMENT ROOT /VAR/WWW/VIRTUAL
+	-----------------------------------------------------------
 	
 	Step : I
 	--------
-	
 	'make a another directory in /var/www/'
 	'mkdir /var/www/virtual'
 	
 	Step : II
 	---------
-	
 	'make a file in /var/www/virtual/ as index.html'
 	'vim /var/www/vitual/index.html'
 
 	Step : III
 	----------
-	
 	'Now configure /etc/httpd/conf/httpd.conf'
 	'write this line in last of file'
 	'vim /etc/httpd/conf/httpd.conf'
@@ -279,8 +274,100 @@ ___________________________________________________________________
 	'Now start the service'
 	'systemctl restart httpd.service'
 	'check in browser'
-	'station140.example.com' ---first webpage of default document root
-	'virtual140.example.com' ---second webpage of virtual directory
+	'station140.example.com' 		---first webpage of default document root
+	'virtual140.example.com' 		---second webpage of virtual directory
+
+_______________________________________________________________________
+>> SECURE HOSTING A WEBPAGE WHOSE DOCUMENT ROOT IS /VAR/WWW/HTML/SECURE
+-----------------------------------------------------------------------
+	
+	STEP FOR SECURE HOSTING
+	-----------------------
+	
+	Step : I
+        --------
+	'make a another directory in /var/www/html'
+        'mkdir /var/www/html/secure'
+
+        Step : II
+        ---------
+        'make a file in /var/www/html/secure as index.html'
+        'vim /var/www/html/secure/index.html'
+
+        Step : III
+        ----------
+        'Now configure /etc/httpd/conf/httpd.conf'
+	'make sure that your firewall must be closed or you can allow HTTP port'
+	'vim /etc/httpd/conf/httpd.conf'
+
+	<virtualhost 192.168.10.140:80>
+        servername station140.example.com
+        documentroot '/var/www/html'
+
+	<directory /var/www/html/secure>
+	order allow,deny
+	allow from 127.0.0.1 192.168.122.1      ---localhost IP's where it should shown
+	</directory>
+
+        </virtualhost>	
+	
+	Step : IV
+        ---------
+        'Now start the service'
+        'systemctl restart httpd.service'
+        'check in browser'
+        'station140.example.com' 		---first webpage of which is not secure 
+        'station140.example.com/secure' 	---second webpage of secure directory [only accesible from localhost]
+
+
+__________________________________________________________________
+>> HOSTING THE WEBPAGE  AT DIFFERENT PORT OTHER THAN 80 (say 1123)
+------------------------------------------------------------------
+	STEP FOR SECURE HOSTING
+        -----------------------
+
+        Step : I
+        --------
+        'make a another directory in /var/www/port'
+        'mkdir /var/www/port'
+
+        Step : II
+        ---------
+        'make a file in /var/www/html/port as index.html'
+        'vim /var/www/port/index.html'
+
+        Step : III
+        ----------
+        'Now configure /etc/httpd/conf/httpd.conf'
+	
+	'vim /etc/httpd/conf/httpd.conf'
+	
+	Listen 80
+	Listen 1123
+
+	<virtualhost 192.168.10.140:80>
+        servername station140.example.com
+        documentroot '/var/www/html'
+        </virtualhost>
+	
+	<virtualhost 192.168.10.140:1123>
+        servername station140.example.com
+        documentroot '/var/www/port'
+        </virtualhost>
+	
+	Step : IV
+	---------
+	'semanage port -l | grep http' 			---checking the all port allowed to selinux policy for http services
+	'semanage port -a -t http_port_t -p tcp 1123' 	---adding the new port to selinux policy
+
+
+	Step : V
+        ---------
+        'Now start the service'
+        'systemctl restart httpd.service'
+        'check in browser'
+        'station140.example.com' 		---webpage with 80 port
+        'station140.example.com:1123' 		---webpage with 1123 port
 
 
 
@@ -428,10 +515,18 @@ ______________________________
         'systemctl start nfs-server'
         'systemctl enable nfs-server'
 
+
+	Accesing /share in client system using 'autofs'
+	-----------------------------------------------
+
+	'yum install autofs -y'
+	'systemctl enable --now autofs'
+	'cd /net/192.168.10.140'
+
 	Mounting /share in client system
 	--------------------------------
 	
-	'showmount 192.168.10.140'
+	'showmount -e 192.168.10.140'
 	'mkdir /mnt/share' ---directory where you wanna mount /share on your PC
 	'mount 192.168.10.140:/share /mnt/share'
 	'vim /etc/fstab'
@@ -469,5 +564,94 @@ _____________________________
 	
 	'nmcli connection up -1floor'
 
+_________________________________
+>> HOW TO INSTALL MARIADB | MYSQL
+---------------------------------
 
- 	
+	INSTALLATION
+	------------
+	
+	'yum install mariadb-server -y'
+	
+	CONFIGURE
+	---------
+
+	'systemctl enable --now mariadb'
+	
+	SECURE-INSTALLATION-MYSQL
+	-------------------------
+	'mysql_secure_installation'
+	enter
+	enter password :
+	press y
+	press y
+	press y
+	
+	done !!
+
+	STARTING MYSQL
+	--------------
+	
+	'mysql -u root -p'
+	enter password :
+	
+	CREATE DATABASES
+	----------------
+	
+	MariaDB [(none)]> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| mycloud            |
+	| mysql              |
+	| performance_schema |
+	+--------------------+
+	4 rows in set (0.05 sec)
+	
+	MariaDB [(none)]> create database new;
+	Query OK, 1 row affected (0.00 sec)
+	
+	MariaDB [(none)]> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| mycloud            |
+	| mysql              |
+	| new                |
+	| performance_schema |
+	+--------------------+
+	5 rows in set (0.00 sec)
+
+	
+	CREATE USER FOR MYSQL OTHER THAN ROOT
+	-------------------------------------
+	
+	MariaDB [(none)]> create user 'test' identified by 'test@123'
+	Query OK, 0 rows affected (0.00 sec)
+	
+	GRANT PERMISSION FOR USER TO ACCESS DATABASE (say new)
+	------------------------------------------------------
+
+	MariaDB [(none)]> grant create,delete,update,insert on new.* to test;
+	Query OK, 0 rows affected (0.00 sec)
+
+	CREATE BACKUP OF ANY DATABASES TO LOCAL SYSTEM
+	----------------------------------------------
+
+	'mysqldump -u root -p mycloud > mycloud-backup.sql'
+	Enter password:'your mysql root user password'
+
+	RESTORE BACKUP TO ANY DATABASES FROM LOCAL SYSTEM
+	-------------------------------------------------
+	
+	'mysql -u root -p mycloud < mycloud-backup.sql'
+        Enter password:'your mysql root user password'
+
+
+
+
+	
+	
+
