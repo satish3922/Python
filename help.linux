@@ -1,6 +1,5 @@
+_______________________LINUX-TROUBLESHOOTING________________________
 
-__________________________________LINUX-TROUBLESHOOTING__________________________________
------------------------------------------------------------------------------------------
 _________________________________
 >> VLC PERMISSION FOR "ROOT" USER
 --------------------------------
@@ -536,6 +535,58 @@ ______________________________
 	
 	NOTE : If you share as 'rw' mode than you must give permission to folder
 
+
+____________________________
+>> HOW TO SETUP SAMBA SERVER
+----------------------------
+
+	SERVER SIDE
+	-----------
+	
+	Step : I
+	--------
+	'yum install samba-server -y'
+	
+	Step : II
+	---------
+	'configure the samba server'
+	'systemcl enable --now samba'
+	'make directory that to be shared'
+	'mkdir /xyz'   			    ---Directory that to shared 
+
+	Step : III
+	----------
+	'rpm -qc samba'                     ---To check configuration file of samba
+	'vim /etc/samba/smb.cnf'
+	
+	[Gdrive]			    ---Name by which you Client will mount named as 'share name'
+	path=/xyz			    ---Directory name which is originally shared with smb
+	writable = yes			    ---Giving permission to access [ 'In this case you must also give permision to /xyz also' ]
+	hosts allow = 192.168.10.158        ---To allow particular hosts to acces this service
+
+	Step : IV
+	---------
+	'useradd -s /sbin/nologin jack'	    ---Adding you to access samba server as root privileges
+	'smbpasswd -a username'		    ---Adding this user in Samba criteria i.e 'smbpasswd -a' is given to add in samba user's
+	
+	[ NOTE : Server IP : 192.168.10.200, Client IP : 192.168.10.140 ]
+	
+	
+	CLIENT SIDE
+	-----------
+
+	Step : I
+	--------
+	'yum install cifs-utils samba* -y'  ---cifs stands for COMMON INTERNET FILE SYSTEM
+	
+	Step : II
+	---------
+	'Create a directory to mount the Directory'
+	'mkdir /media/samba'
+	'mount -u jack //192.168.10.200/Gdrive  /media/samba'
+	Enter password : samba user jack's Password
+	
+	
 
 ______________________________________________________________
 >> HOW TO USE NMCLI TO SET PERMANENT IP FOR DIFFERENT LOCATION
