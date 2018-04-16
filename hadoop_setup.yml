@@ -1,0 +1,14 @@
+---
+- name: Setup HADOOP
+  hosts: satish.example.com
+  become: true
+
+  tasks:
+  - name: Copying core-site.xml to All client
+    copy:
+      src: /etc/hadoop/core-site.xml
+      dest: /etc/hadoop/core-site.xml
+  - name: Copying hdfs-site.xml to All client
+    copy:
+      src: /etc/hadoop/hdfs-site.xml
+      dest: /etc/hadoop/hdfs-site.xml
