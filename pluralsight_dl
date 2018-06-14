@@ -5,11 +5,11 @@
 #$1 = cookies.txt with added '# Netscape HTTP Cookie File' in file at top most line
 
 # download youtube-dl for this 
-echo "Cookies Source : "
-read cookie
+#echo "Cookies Source : "
+#read cookie
 echo "Path to Download : "
 read dest
 echo "link of pluralsight : "
 read link
 
-youtube-dl --cookies $cookie -o "$dest/%(playlist_index)s-%(title)s.%(ext)s" --min-sleep-interval 31 --max-sleep-interval 32 $link --playlist-start 1
+youtube-dl -c --cookies /root/Documents/Github/python/cookie.txt -o "/root/Downloads/Tutorials/PluralSight/$dest/%(playlist_index)s-%(title)s.%(ext)s" --min-sleep-interval 31 --max-sleep-interval 32 $link --playlist-start 1

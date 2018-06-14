@@ -713,3 +713,35 @@ ________________________________________________________
 >> 	
 	
 
+
+This tutorial shows you how to install Python 3, set up a local programming environment and create your first python program. The commands that you need to follow along with this tutorial are:
+
+ 
+
+Getting your Server ready for the install:
+sudo yum update
+sudo yum install yum-utils
+sudo yum groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+
+ 
+
+Installing Python and PIP
+sudo yum -y install python36u
+python3.6 -V
+sudo yum -y install python36u-pip
+sudo yum -y install python36u-devel
+
+ 
+
+Setting up your local environment.
+mkdir environments
+cd environments
+python3.6 -m venv my_env
+source my_env/bin/activate
+
+ 
+
+Creating your python program:Vi HelloWorld.py
+print(“Hello, World!”)
+HelloWorld.py
