@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# It uses cookies and link of library from pluralsight course
+
+#$1 = cookies.txt with added '# Netscape HTTP Cookie File' in file at top most line
+
+# download youtube-dl for this 
+#echo "Cookies Source : "
+#read cookie
+echo "Path to Download : "
+read dest
+echo "link of pluralsight : "
+read link
+
+youtube-dl  --cookies /root/Documents/Github/python/cookie.txt -o "/root/Downloads/Tutorials/PluralSight/$dest/%(playlist_index)s-%(title)s.%(ext)s" --min-sleep-interval 31 --max-sleep-interval 32 $link --playlist-items 35,36,77-82
