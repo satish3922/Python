@@ -116,6 +116,10 @@ ______________________________________________________
 	
 	Go to Setting -> ssh key -> Add ssh-key
 
+	CLONE REPOSITARY
+	----------------
+	'git clone git@github.com:satish3922/Python.git' 
+	
 	SETUP CONNECTION
 	----------------
 	To check the remote link of github
@@ -701,6 +705,25 @@ _________________________________
 	'mysql -u root -p mycloud < mycloud-backup.sql'
         Enter password:'your mysql root user password'
 
+	CREATE TABLE IN MYSQL
+	---------------------
+	
+	'create table tableName(
+		serialNo INT AUTO_INCREMENT,
+		empName VARCHAR(20),
+		empNo VARCHAR(20),
+		PRIMARY KEY serialNo);'
+
+	INTIALIZE AUTO_INCREMENT VALUE
+	------------------------------
+	
+	'alter table tableName AUTO_INCREMENT=1;'
+	
+	INSERT INTO TABLE
+	-----------------
+	
+	'INSERT INTO tableName(empName,empNo),
+		VALUES('satish','1060490');'
 
 ________________________________________________________
 >> HOW TO INSTALL DEFAULTS PLUGIN FOR LINUX VIDEO PLAYER
@@ -718,30 +741,36 @@ This tutorial shows you how to install Python 3, set up a local programming envi
 
  
 
-Getting your Server ready for the install:
-sudo yum update
-sudo yum install yum-utils
-sudo yum groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+	Getting your Server ready for the install:
+	------------------------------------------
+	sudo yum update
+	sudo yum install yum-utils
+	sudo yum groupinstall development
+	sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 
  
 
-Installing Python and PIP
-sudo yum -y install python36u
-python3.6 -V
-sudo yum -y install python36u-pip
-sudo yum -y install python36u-devel
+	Installing Python and PIP
+	-------------------------
+	sudo yum -y install python36u
+	python3.6 -V
+	sudo yum -y install python36u-pip
+	sudo yum -y install python36u-devel
 
  
 
-Setting up your local environment.
-mkdir environments
-cd environments
-python3.6 -m venv my_env
-source my_env/bin/activate
+	Setting up your local environment.
+	----------------------------------
+	mkdir environments
+	cd environments
+	python3.6 -m venv my_env
+	source my_env/bin/activate
 
  
 
-Creating your python program:Vi HelloWorld.py
-print(“Hello, World!”)
-HelloWorld.py
+	Creating your python program:Vi HelloWorld.py
+	---------------------------------------------
+	print(“Hello, World!”)
+	HelloWorld.py
+
+
