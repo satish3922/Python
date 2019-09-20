@@ -774,3 +774,36 @@ This tutorial shows you how to install Python 3, set up a local programming envi
 	HelloWorld.py
 
 
+_____________________________________
+>> HOW TO DOWNLOAD VIDEO FROM YOUTUBE
+-------------------------------------
+
+	Software Required
+	-----------------
+	pip install youtube_dl # Download latest version
+
+	Download a single Video
+	-----------------------
+	youtube_dl video_link
+
+	Download whole videos from a channel
+	------------------------------------
+	youtube_dl videos_link # link of videos section in channel
+	
+	Download whole Playlist
+	-----------------------
+	youtube_dl "playlist_link" # Use Quotation becoz of &
+
+	Check Out Formats Available
+	---------------------------
+	youtube_dl -F video_link
+
+	Downloads in Particular format
+	------------------------------
+	youtube_dl -f format_code video_link
+
+	Download in Particular Directory
+	--------------------------------
+	youtube_dl -o path_to_Download video_link
+
+
