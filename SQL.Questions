@@ -1,0 +1,51 @@
+1. What is the difference between DELETE and TRUNCATE statements ?
+------------------------------------------------------------------
+	DELETE:
+	-------
+	* Delete command is used to delete a row in table.
+	* You can rollback data after using delete statement.
+	* It is DML command.
+	* It is Slower than TRUNCATE statement.
+
+	TRUNCATE:
+	---------
+	* Truncate is used to delete all the rows from a table.
+	* You cannot rollback data.
+	* It is DDL command.
+	* It is faster.
+
+2. What are different subsets of SQL?
+-------------------------------------
+	DDL (Data Define Language):
+	---------------------------
+	Consists of the commands that can used to define database schema.
+	eg. create,alter,Truncate
+	
+	DML (Data Manipulation Language):
+	---------------------------------
+	Consists of commands that deals with the manipulation of data in database.
+	eg. insert,select,delete,update
+
+	DCL (Data Control Language):
+	----------------------------
+	Includes commands which deal with the rights,permissions and other controls of DB.
+	eg. grant,revoke
+
+	TCL (Transaction Control Language):
+	-----------------------------------
+	Includes commands which mainly deal with transaction of Database.
+	eg. rollback,commit
+
+3. What do you mean by DBMS?
+----------------------------
+A DBMS is a software application that interacts with the user, application and the database itself to capture and analyse data.
+The data stored in the database can be modified, retrieved and deleted, and can be of any type like strings,numbers,images etc.
+
+	Types of DBMS:
+	--------------
+	* Hierarchical
+	* Network
+	* Relational
+	* Object-Oriented
+
+4. 
