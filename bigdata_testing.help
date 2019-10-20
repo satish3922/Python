@@ -1,0 +1,81 @@
+______________________________________________
+ [ Bigdata Testing Lecture Details from LEX ]
+----------------------------------------------
+
+* Prerequisites of UNIX
+-----------------------
+	> Memory Management
+	> File Systems
+	> I/O Managements
+	> Process Managements
+
+____________________________________________
+>>> Let's start with Basics commands of UNIX
+--------------------------------------------
+
+	> who - print info of remotely logined user
+	-------------------------------------------
+	* 'who -m' or 'who am i' 	# to see myself info
+
+	> uname - print operating system name
+	-------------------------------------
+	* 'uname' 	# print OS name
+	* 'uname -p'	# print architecture
+	* 'uname -r' 	# print kernal version
+	* 'uname -s' 	# print kernel name
+	* 'uname -a' 	# print all information at once
+
+	> echo - print text in shell
+	----------------------------
+	* 'echo 'hello \nworld'		# print whole string in one line
+	* 'echo 'var=5;var++;var' | bc'	# print after exec of operation
+	* 'echo -e 'hello \nworld'	# enable interpretation of backslash escapes
+
+	> printf - print text as in C language
+	--------------------------------------
+	* 'printf "%d ate %d" 7 9' 	# print '7 ate 9'
+
+	> bc - binary calculator
+	------------------------
+	* 12*38; 56*84; 65-5
+	* use scale=2 		# print decimal at 2 decimal place only
+
+	> tty - print how many terminal is openned
+	------------------------------------------
+
+	> ls - list item in directory
+	-----------------------------
+	* 'ls -a' 	# show hidden or configuration file
+	* 'ls -l' 	# show file permission
+	* 'ls -ldZ' 	# show type of environment it is created
+	* 'ls -r' 	# show files & folder in current directory
+	* 'ls -R' 	# show files & folder from recursive directory
+
+
+	> head - to read first n lines from a file
+	------------------------------------------
+	* 'head -n 5 filename.log' 	# show first 5 lines
+	* 'head -c 24 filename.log'	# show only first 5 characters
+	* 'head -f filename.log' 	# to watch over first line of file if any changes occur
+	* 'head -f -s2 filename.log' 	# to watch over first line of file if any changes occur in every 2 sec
+ 
+	> tail - to read last n lines from a file
+	------------------------------------------
+	* 'tail -n 5 filename.log' 	# show last 5 lines
+	* 'tail -c 24 filename.log'	# show only last 5 characters
+	* 'tail -f filename.log' 	# to watch over last line of file if any changes occur
+	* 'tail -f -s2 filename.log' 	# to watch over last line of file if any changes occur in every 2 sec
+
+	> cut - to print particular character
+	-------------------------------------
+	* 'cut -b 1,2,3 state.txt' 	# print 1,2,3 bytes of each line
+	* 'cut -b 1-3,5-8 state.txt' 	# print 1-3 and 5-8 bytes of each line
+	* 'cut -c 1,2,3 state.txt' 	# print 1,2,3 char of each line
+	* 'cut -d "delimiter" -f <field_name> state.txt' 	#print only such column after spliting
+
+	> diff - to check difference from one file
+	------------------------------------------
+	* 'diff new_filename old_filename' 	# print all difference
+	* 'diff -c new_filename old_filename' 	# print all details
+	* 'diff -y new_filename old_filename' 	# print diff in 2 column
+	* 'diff -q new_filename old_filename' 	# print it is differ or not

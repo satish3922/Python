@@ -145,7 +145,15 @@ ________
 	ind = mat[:,1].argsort(axis=0)
 	mat[ind]
 	
-	* 
+	* How to Access Upper | Lower | Diagnol of Matrix
+	-------------------------------------------------
+	np.triu(no_of_column,1) # it will give indices of upper part
+
+	np.tril(no_of_column,-1) # it will give indices of lower part
+
+	np.diag_indices(no_of column) # it will give indices of diagnol
+
+
 
 
 
