@@ -142,6 +142,17 @@ ______________________________________________________
 	verifying : yes to continue for 1st time
 	Done !!!
 
+_________________________________________________________
+>> HOW TO ADD SCREENSHOT TO README.md FILE IN GITHUB REPO
+---------------------------------------------------------
+	Edit the README.md file and paste this
+	'<img src="<image_url>" style=" width:120px ; height:100px " />
+
+	for image url:
+		- upload screenshot in github
+		- copy link location of that image from github repository
+	commit changes, Here you go!
+
 ______________________________________________
 >> HOW TO INSTALL IPYTHON NOTEBOOK AND JUPYTER
 ----------------------------------------------
